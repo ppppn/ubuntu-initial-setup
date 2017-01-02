@@ -43,7 +43,7 @@
 - name: change mirror server
   replace:
       dest: /etc/apt/sources.list
-      regexp: ' .*://.*/ '
+      regexp: ' .*://.*/ (?!partner)'
       replace: " {{ mirror_server }} "
   become: true
   register: result

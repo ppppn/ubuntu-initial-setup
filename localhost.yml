@@ -1,6 +1,6 @@
 - hosts: localhost
   roles:
-      - add_jp_team_repo
+      - set_repositories
       - install_essentials
       - install_desktop_essentials
       - add_lines_to_fstab
