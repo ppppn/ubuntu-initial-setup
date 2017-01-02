@@ -1,0 +1,14 @@
+---
+# vars file for install_essentials
+install_packages:
+    - byobu
+    - vim
+    - exfat-fuse
+    - openssh-server
+    - git
+    - i7z
+    - curl
+    #- mdadm
+    - p7zip
+install_deb_packages: []
+remove_packages: []

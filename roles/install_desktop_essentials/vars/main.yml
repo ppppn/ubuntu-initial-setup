@@ -1,0 +1,17 @@
+---
+# vars file for install_desktop_essentials
+install_repo_packages:
+    - chromium-browser
+    - virtualbox
+    - fcitx-mozc
+    #- wine
+    - indicator-multiload
+    - indicator-cpufreq
+    - gimp
+    - vlc
+    - gscan2pdf
+    - gparted
+install_deb_packages:
+    - https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+remove_packages: 
+    - anthy

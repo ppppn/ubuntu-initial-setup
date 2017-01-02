@@ -1,0 +1,22 @@
+---
+# tasks file for install_essentials
+- name: install packages from repositories
+  apt:
+      pkg: "{{ item }}"
+      update_cache: yes
+      cache_valid_time: 3600
+  with_items: "{{ install_repo_packages }}"
+  become: true
+
+- name: install packages from online .deb
+  apt:
+      deb: "{{ item }}"
+  with_items: "{{ install_deb_packages }}"
+  become: true
+
+- name: remove packages
+  apt:
+      pkg: "{{ item }}"
+      state: absent
+  with_items: "{{ remove_packages }}"
+  become: true

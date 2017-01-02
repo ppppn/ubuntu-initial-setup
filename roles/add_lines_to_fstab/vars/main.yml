@@ -1,0 +1,4 @@
+---
+# vars file for add_lines_to_fstab
+fstab_lines:
+  - ""
