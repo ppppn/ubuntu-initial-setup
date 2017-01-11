@@ -11,7 +11,10 @@ install_repo_packages:
     - vlc
     - gscan2pdf
     - gparted
+
 install_deb_packages:
     - https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
 remove_packages: 
     - anthy
+

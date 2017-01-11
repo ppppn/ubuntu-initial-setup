@@ -16,7 +16,8 @@
   become: true
   register: result
 
-- set_fact: need_upgrade=true
+- name: check necessity of apt upgrade
+  set_fact: need_upgrade=true
   when: result|changed
 
 - name: add ubuntu jp ppa apt key
@@ -26,29 +27,43 @@
   become: true
   register: result
 
-- set_fact: need_upgrade=true
+- name: check necessity of apt upgrade
+  set_fact: need_upgrade=true
   when: result|changed
 
 - name: download ubuntu jp team sources.list
   get_url:
-      url: https://www.ubuntulinux.jp/sources.list.d/{{ codename }}.list
-      dest: /etc/apt/sources.list.d/ubuntu-ja.list
+      url: "https://www.ubuntulinux.jp/sources.list.d/{{ codename }}.list"
+      dest: "/etc/apt/sources.list.d/ubuntu-ja.list"
       mode: 0644
   become: true
   register: result
 
-- set_fact: need_upgrade=true
+- name: check necessity of apt upgrade
+  set_fact: need_upgrade=true
   when: result|changed
 
 - name: change mirror server
   replace:
       dest: /etc/apt/sources.list
-      regexp: ' .*://.*/ (?!partner)'
-      replace: " {{ mirror_server }} "
+      regexp: " .*://.* {{ codename }}(?!.*partner)"
+      replace: " {{ mirror_server }} {{ codename }}"
   become: true
   register: result
 
-- set_fact: need_upgrade=true
+- name: check necessity of apt upgrade
+  set_fact: need_upgrade=true
+  when: result|changed
+
+- name: add ppa
+  apt_repository:
+      repo: "{{ item }}"
+  with_items: "{{ ppa }}"
+  become: true
+  register: result
+
+- name: check necessity of apt upgrade
+  set_fact: need_upgrade=true
   when: result|changed
 
 - name: add additional repos
@@ -59,7 +74,8 @@
   become: true
   register: result
 
-- set_fact: need_upgrade=true
+- name: check necessity of apt upgrade
+  set_fact: need_upgrade=true
   when: result|changed
 
 - name: apt upgrade

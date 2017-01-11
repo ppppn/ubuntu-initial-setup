@@ -1,0 +1,7 @@
+---
+# vars file for update_alternatives
+
+alternatives:
+    - name: editor
+      path: /usr/bin/vim.basic
+

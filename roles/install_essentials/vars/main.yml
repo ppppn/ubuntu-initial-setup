@@ -10,5 +10,6 @@ install_packages:
     - curl
     #- mdadm
     - p7zip
+    - apt-file
 install_deb_packages: []
 remove_packages: []

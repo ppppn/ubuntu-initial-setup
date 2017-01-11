@@ -1,18 +1,19 @@
 ---
 # vars file for set_repositories
 mirror_server: 
-    #"http://ubuntutym.u-toyama.ac.jp/ubuntu/"
-    #"http://ftp.riken.go.jp/Linux/ubuntu/"
-    #"ftp://ftp.riken.go.jp/Linux/ubuntu/"
-    #"http://ftp.jaist.ac.jp/pub/Linux/ubuntu/"
-    #"ftp://ftp.jaist.ac.jp/pub/Linux/ubuntu/"
-    #"http://www.ftp.ne.jp/Linux/packages/ubuntu/archive/"
-    #"ftp://ftp.kddilabs.jp/Linux/packages/ubuntu/archive/"
-    "http://ubuntu-ashisuto.ubuntulinux.jp/ubuntu/"
-    #"http://ftp.yz.yamagata-u.ac.jp/pub/linux/ubuntu/archives/"
-    #"ftp://ftp.yz.yamagata-u.ac.jp/pub/linux/ubuntu/archives/"
+    #"http://ubuntutym.u-toyama.ac.jp/ubuntu"
+    #"http://ftp.riken.go.jp/Linux/ubuntu"
+    #"ftp://ftp.riken.go.jp/Linux/ubuntu"
+    #"http://ftp.jaist.ac.jp/pub/Linux/ubuntu"
+    #"ftp://ftp.jaist.ac.jp/pub/Linux/ubuntu"
+    #"http://www.ftp.ne.jp/Linux/packages/ubuntu/archive"
+    #"ftp://ftp.kddilabs.jp/Linux/packages/ubuntu/archive"
+    "http://ubuntu-ashisuto.ubuntulinux.jp/ubuntu"
+    #"http://ftp.yz.yamagata-u.ac.jp/pub/linux/ubuntu/archives"
+    #"ftp://ftp.yz.yamagata-u.ac.jp/pub/linux/ubuntu/archives"
 
-
+ppa:
+    - "ppa:ansible/ansible"
 
 additional_repos: 
     {}

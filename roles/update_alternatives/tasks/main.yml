@@ -1,0 +1,9 @@
+---
+# tasks file for update_alternatives
+
+- name: update-alternatives
+  alternatives:
+      name: "{{ item.name }}"
+      path: "{{ item.path }}"
+  with_items: "{{ alternatives }}"
+  become: true
