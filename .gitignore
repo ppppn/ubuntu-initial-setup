@@ -1,4 +1,3 @@
 *.swp
 *.retry
 *~
-roles/add_to_fstab/vars/main.yml
