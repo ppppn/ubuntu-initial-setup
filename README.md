@@ -11,6 +11,7 @@ Ubuntuをクリーンインストールすると、毎回、付け足し付け�
     - sources.listの追加
 - APTのミラーサーバーを[日本国内のサーバー](https://www.ubuntulinux.jp/ubuntu/mirrors) に変更します
     - vars/main.yml に列挙してあるうち、お好みのサーバーを1つ選んで、他はすべてコメントアウトしてください
+    - ただし、 partner レポジトリは canonical.com にしかないようなので、ここは置換しないようにしています
 - 標準外レポジトリを追加します
     - ppaとか
 - 上記のタスクで変更があれば、apt upgradeをおこないます
@@ -31,15 +32,20 @@ Ubuntuをクリーンインストールすると、毎回、付け足し付け�
             - URLでもOK
         - remove_packages にリスト形式で削除するパッケージ名を列挙します
 
+### update_alternatives
+- update-alternatives コマンドの実行に相当します
+    - update-alternatives --config <name> <path> に対応するように、 vars/main.yml に記載します
+    - 私は editor をいつも vim に変更しているので、そのように書いています
+
 ### add_lines_to_fstab
 - インストール時には設定しない・できない /etc/fstab の行を追加します
     - vars/main.yml にリスト形式で追加する行を列挙します
 
 ## 流し方
-- localhost.yml は、localhostに対し、上記すべてのロールを適用するプレイブックです。
+- localhost.yml は、localhostに対し、上記すべてのロールを適用するプレイブックです
 - 次のコマンドを叩けば、プレイブックが流れます:
    ``` ansible-playbook -i hosts localhost.yml -K ```
     - sudo のパスワードが要求されます
 
-- 本番環境でおおなう前に、仮想環境等で実験をおこなってから実用してください
+- 本番環境でおこなう前に、仮想環境等で実験をおこなってから実用してください
     - 本プレイブックにより損害が生じても、作成者は責任を負いません

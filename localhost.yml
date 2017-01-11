@@ -3,4 +3,5 @@
       - set_repositories
       - install_essentials
       - install_desktop_essentials
+      - update_alternatives
       - add_lines_to_fstab
