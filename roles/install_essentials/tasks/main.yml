@@ -5,7 +5,7 @@
       pkg: "{{ item }}"
       update_cache: yes
       cache_valid_time: 3600
-  with_items: "{{ install_repo_packages }}"
+  with_items: "{{ install_packages }}"
   become: true
 
 - name: install packages from online .deb
