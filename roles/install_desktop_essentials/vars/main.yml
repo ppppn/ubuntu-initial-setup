@@ -1,10 +1,7 @@
 ---
 # vars file for install_desktop_essentials
 install_repo_packages:
-    - chromium-browser
-    - virtualbox
     - fcitx-mozc
-    #- wine
     - indicator-multiload
     - indicator-cpufreq
     - gimp
@@ -14,6 +11,7 @@ install_repo_packages:
 
 install_deb_packages:
     - https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    - https://go.microsoft.com/fwlink/?LinkID=760868
 
 remove_packages: 
     - anthy
