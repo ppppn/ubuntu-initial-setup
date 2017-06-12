@@ -37,9 +37,12 @@ Ubuntuをクリーンインストールすると、毎回、付け足し付け�
     - update-alternatives --config <name> <path> に対応するように、 vars/main.yml に記載します
     - 私は editor をいつも vim に変更しているので、そのように書いています
 
-### add_lines_to_fstab
-- インストール時には設定しない・できない /etc/fstab の行を追加します
-    - vars/main.yml にリスト形式で追加する行を列挙します
+### docker_ce
+- [Docker CE](https://docs.docker.com/engine/installation/linux/ubuntu/#install-using-the-repository) の手順にしたがって、docker-ceパッケージをインストールします
+  - 前提パッケージのインストール
+  - 鍵の追加
+  - sources.listの追加
+  - `docker-ce` のインストール
 
 ## 流し方
 - localhost.yml は、localhostに対し、上記すべてのロールを適用するプレイブックです
