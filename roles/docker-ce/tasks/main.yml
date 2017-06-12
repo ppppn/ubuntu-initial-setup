@@ -1,0 +1,52 @@
+---
+# tasks file for docker-ce
+- name: get codename of installation
+  shell: lsb_release -cs 
+  changed_when: false
+  register: codename_result
+
+- set_fact: codename='{{ codename_result.stdout }}'
+
+- name: install prerequisities
+  apt: 
+    name: '{{ item }}'
+    state: present
+    cache_valid_time: 3600
+  with_items:
+    - 'apt-transport-https'
+    - 'ca-certificates'
+    - 'curl'
+    - 'software-properties-common'
+
+- name: add docker's official gpg key
+  apt_key:
+    url: "https://download.docker.com/linux/ubuntu/gpg"
+    state: present
+  become: true
+  register: result
+
+- name: check necessity of apt update
+  set_fact: need_update=true
+  when: result|changed
+
+- name: add apt repository for docker-ce
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ codename }} stable"
+    state: present
+    filename: 'docker-ce'
+
+- name: check necessity of apt update
+  set_fact: need_update=true
+  when: result|changed
+
+- name: update apt cache
+  apt:
+    update_cache: yes
+  when:
+    - need_update is defined
+    - need_update: true
+
+- name: install docker-ce
+  apt:
+    name: docker-ce
+    state: present
