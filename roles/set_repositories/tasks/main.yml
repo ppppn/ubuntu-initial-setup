@@ -1,7 +1,7 @@
 ---
 # tasks file for set_repositories
 - name: get codename of installation
-  shell: cat /etc/lsb-release |grep CODENAME|sed -e 's/DISTRIB_CODENAME=\(.*\)/\1/g' 
+  shell: lsb_release -cs 
   changed_when: false
   register: codename_result
 
