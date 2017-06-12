@@ -1,8 +1,0 @@
----
-# tasks file for add_lines_to_fstab
-- name: add lines to /etc/fstab
-  lineinfile: 
-      dest: "/etc/fstab"
-      line: "{{ item }}"
-  with_items: "{{ fstab_lines }}"
-  become: true

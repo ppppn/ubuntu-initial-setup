@@ -1,7 +1,0 @@
----
-# vars file for add_lines_to_fstab
-fstab_lines:
-    - "UUID=c5772532-d9e4-437e-94d0-1e6cb859468f /home/hdd	  ext4	  defaults	0	2"
-    - "UUID=2bdc7858-d22b-4be3-a669-b42fcf794b61 /home/working  ext4 defaults  0 2"
-    - "UUID=db458ea9-16b6-4526-8069-f8138626715c /home/backup ext4 defaults 0 2"
-
