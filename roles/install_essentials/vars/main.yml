@@ -8,7 +8,6 @@ install_packages:
     - git
     - i7z
     - curl
-    #- mdadm
     - p7zip
     - apt-file
 install_deb_packages: []
