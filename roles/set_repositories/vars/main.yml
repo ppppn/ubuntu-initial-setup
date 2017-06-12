@@ -12,11 +12,7 @@ mirror_server:
     #"http://ftp.yz.yamagata-u.ac.jp/pub/linux/ubuntu/archives"
     #"ftp://ftp.yz.yamagata-u.ac.jp/pub/linux/ubuntu/archives"
 
+enable_partner_repo: yes
+
 ppa:
     - "ppa:ansible/ansible"
-
-additional_repos: 
-    {}
-#- repo: ""
-#      filename: ""
-#      codename: ""

@@ -1,7 +1,5 @@
 ---
 # tasks file for set_repositories
-- set_fact: need_upgrade=false
-
 - name: get codename of installation
   shell: cat /etc/lsb-release |grep CODENAME|sed -e 's/DISTRIB_CODENAME=\(.*\)/\1/g' 
   changed_when: false
@@ -44,10 +42,10 @@
   when: result|changed
 
 - name: change mirror server
-  replace:
-      dest: /etc/apt/sources.list
-      regexp: " .*://.* {{ codename }}(?!.*partner)"
-      replace: " {{ mirror_server }} {{ codename }}"
+  template:
+      src: 'templates/sources.list.j2'
+      dest: '/etc/apt/sources.list'
+      mode: 0644
   become: true
   register: result
 
@@ -66,14 +64,6 @@
   set_fact: need_upgrade=true
   when: result|changed
 
-- name: add additional repos
-  apt_repository:
-      repo: "{{ item.repo }}"
-      filename: "{{ item.filename }}"
-  with_items: "{{ additional_repos }}"
-  become: true
-  register: result
-
 - name: check necessity of apt upgrade
   set_fact: need_upgrade=true
   when: result|changed
@@ -83,4 +73,6 @@
       update_cache: yes
       upgrade: dist
   become: true
-  when: need_upgrade == true
+  when:
+    - need_upgrade is defined 
+    - need_upgrade == true
