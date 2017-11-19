@@ -10,5 +10,6 @@ install_packages:
     - curl
     - p7zip
     - apt-file
+    - sysstat
 install_deb_packages: []
 remove_packages: []

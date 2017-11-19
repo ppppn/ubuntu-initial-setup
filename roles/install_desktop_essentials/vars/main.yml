@@ -2,13 +2,13 @@
 # vars file for install_desktop_essentials
 install_repo_packages:
     - fcitx-mozc
-    - indicator-multiload
-    - indicator-cpufreq
     - gimp
     - vlc
     - gscan2pdf
     - gparted
     - virt-manager
+    - virtualbox
+    - chrome-gnome-shell
 
 install_deb_packages:
     - https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
