@@ -12,22 +12,12 @@
       url: "https://www.ubuntulinux.jp/ubuntu-ja-archive-keyring.gpg"
       state: present
   become: true
-  register: result
-
-- name: check necessity of apt upgrade
-  set_fact: need_upgrade=true
-  when: result|changed
 
 - name: add ubuntu jp ppa apt key
   apt_key:
       url: "https://www.ubuntulinux.jp/ubuntu-jp-ppa-keyring.gpg"
       state: present
   become: true
-  register: result
-
-- name: check necessity of apt upgrade
-  set_fact: need_upgrade=true
-  when: result|changed
 
 - name: download ubuntu jp team sources.list
   get_url:
@@ -35,11 +25,6 @@
       dest: "/etc/apt/sources.list.d/ubuntu-ja.list"
       mode: 0644
   become: true
-  register: result
-
-- name: check necessity of apt upgrade
-  set_fact: need_upgrade=true
-  when: result|changed
 
 - name: change mirror server
   template:
@@ -47,32 +32,15 @@
       dest: '/etc/apt/sources.list'
       mode: 0644
   become: true
-  register: result
-
-- name: check necessity of apt upgrade
-  set_fact: need_upgrade=true
-  when: result|changed
 
 - name: add ppa
   apt_repository:
       repo: "{{ item }}"
   with_items: "{{ ppa }}"
   become: true
-  register: result
-
-- name: check necessity of apt upgrade
-  set_fact: need_upgrade=true
-  when: result|changed
-
-- name: check necessity of apt upgrade
-  set_fact: need_upgrade=true
-  when: result|changed
 
 - name: apt upgrade
   apt:
       update_cache: yes
       upgrade: dist
   become: true
-  when:
-    - need_upgrade is defined 
-    - need_upgrade == true
