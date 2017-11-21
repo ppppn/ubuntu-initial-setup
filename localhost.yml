@@ -4,4 +4,4 @@
       - install_essentials
       - install_desktop_essentials
       - update_alternatives
-      - docker_ce
+      # - docker_ce
