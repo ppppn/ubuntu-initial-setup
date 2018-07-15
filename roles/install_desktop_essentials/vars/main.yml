@@ -9,6 +9,7 @@ install_repo_packages:
     - virt-manager
     - virtualbox
     - chrome-gnome-shell
+    - gnome-system-monitor
 
 install_deb_packages:
     - https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
